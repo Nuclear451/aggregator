@@ -9,8 +9,9 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "item_id")
     Long itemId;
-    @Column(length = 100)
+    @Column(length = 1000)
     private String title;
+    @Column(length = 1000)
     private String text;
     private String ref;
 
@@ -57,5 +58,16 @@ public class Item {
 
     public void setRule(Rule rule) {
         this.rule = rule;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Item && title.equals(((Item) obj).title);
+    }
+
+    @Override
+    public int hashCode() {
+        return title.hashCode();
     }
 }

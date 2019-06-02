@@ -19,6 +19,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/news">News</a>
                 </li>
+                <li class="nav-item">
+                    <input class="form-control mr-sm-2" id="news_seach" type="search" placeholder="Search" aria-label="Search">
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchNews()">Search</button>
+                </li>
             </ul>
         </div>
     </nav>

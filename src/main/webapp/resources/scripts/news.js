@@ -6,7 +6,7 @@ function createNewsElement(news) {
                 '<div class="media-body">' +
                     '<h5 class="mt-0">' + news.title + '</h5>' +
                     news.text +
-
+                    '<br><a href="' + news.ref + '">Source</a>' +
                 '</div>' +
             '</div>' +
             '<hr/>'
@@ -46,6 +46,30 @@ function createPage(pageNumber, activePage) {
     if (activePage === pageNumber) active = 'active';
     return '<li class="page-item ' + active +  '">' +
         '<a class="page-link" onclick="getAllNews(' + (pageNumber - 1) + ')">' + pageNumber + '</a></li>'
+}
+
+function searchNews() {
+    let query = document.getElementById("news_seach").value;
+    console.log(query);
+    if (!query) return;
+
+    while (newsContainer.firstChild) {
+        newsContainer.removeChild(newsContainer.firstChild);
+    }
+    while (pageContainer.firstChild) {
+        pageContainer.removeChild(pageContainer.firstChild);
+    }
+
+    $.ajax({
+        url: '/news/search?query=' + query,
+        dataType : "json",
+        success: function (data) {
+            console.log(data);
+            for (const news of data) {
+                newsContainer.insertAdjacentHTML('beforeend', createNewsElement(news));
+            }
+        }
+    });
 }
 
 getAllNews();
