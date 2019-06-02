@@ -108,4 +108,11 @@ public class Rule {
     public void setRefClass(String refClass) {
         this.refClass = refClass;
     }
+
+    @Override
+    public String toString() {
+        return "Rule{" +
+                "url='" + url + '\'' +
+                '}';
+    }
 }

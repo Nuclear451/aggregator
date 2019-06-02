@@ -70,4 +70,11 @@ public class Item {
     public int hashCode() {
         return title.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "title='" + title + '\'' +
+                '}';
+    }
 }
