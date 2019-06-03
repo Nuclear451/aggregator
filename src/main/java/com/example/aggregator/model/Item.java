@@ -3,22 +3,26 @@ package com.example.aggregator.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "item")
+
+@Table(name = "item") // TODO: 02.06.2019 add index to title column
 public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "item_id")
     Long itemId;
+
     @Column(length = 1000)
     private String title;
+
     @Column(length = 1000)
     private String text;
+
     private String ref;
 
     @ManyToOne
     @JoinColumn(name = "ruleId")
     private Rule rule;
-
 
     public Long getId() {
         return itemId;
@@ -59,7 +63,6 @@ public class Item {
     public void setRule(Rule rule) {
         this.rule = rule;
     }
-
 
     @Override
     public boolean equals(Object obj) {
